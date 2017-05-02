@@ -1,0 +1,14 @@
+version: '2'
+services:
+    kbldemo-app:
+        image: kbldemo
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://kbldemo-postgresql:5432/kbldemo
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    kbldemo-postgresql:
+        extends:
+            file: postgresql.yml
+            service: kbldemo-postgresql
