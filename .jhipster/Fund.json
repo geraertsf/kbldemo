@@ -1,0 +1,52 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "category",
+            "otherEntityName": "category",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "subCategory",
+            "otherEntityName": "subCategory",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "vni",
+            "otherEntityName": "vniHistory",
+            "otherEntityRelationshipName": "fund"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "fund",
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "otherEntityField": "countryName",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "range",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170502161109",
+    "entityTableName": "fund",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl"
+}

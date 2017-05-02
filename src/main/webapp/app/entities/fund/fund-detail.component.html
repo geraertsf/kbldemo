@@ -1,0 +1,47 @@
+
+<div *ngIf="fund">
+    <h2><span jhiTranslate="kbldemoApp.fund.detail.title">Fund</span> {{fund.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="kbldemoApp.fund.range">Range</span></dt>
+        <dd>
+            <span>{{fund.range}}</span>
+        </dd>
+        <dt><span jhiTranslate="kbldemoApp.fund.name">Name</span></dt>
+        <dd>
+            <span>{{fund.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="kbldemoApp.fund.category">Category</span></dt>
+        <dd>
+            <div *ngIf="fund.category">
+                <a [routerLink]="['/category', fund.category?.id]">{{fund.category?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="kbldemoApp.fund.subCategory">Sub Category</span></dt>
+        <dd>
+            <div *ngIf="fund.subCategory">
+                <a [routerLink]="['/sub-category', fund.subCategory?.id]">{{fund.subCategory?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="kbldemoApp.fund.country">Country</span></dt>
+        <dd>
+            <span *ngFor="let country of fund.countries; let last = last">
+                <a [routerLink]="['/country', country?.id ]">{{country.countryName}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'fund/'+ fund.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

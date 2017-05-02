@@ -1,0 +1,23 @@
+{
+    "kbldemoApp": {
+        "vniHistory" : {
+            "home": {
+                "title": "VniHistories",
+                "createLabel": "Créer un nouveau Vni History",
+                "createOrEditLabel": "Créer ou éditer un Vni History"
+            },
+            "created": "Un nouveau Vni History a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Vni History avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Vni History avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Vni History {{ id }} ?"
+            },
+            "detail": {
+                "title": "Vni History"
+            },
+            "date": "Date",
+            "value": "Value",
+            "fund": "Fund"
+        }
+    }
+}

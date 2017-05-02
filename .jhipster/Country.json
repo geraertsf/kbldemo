@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "fund",
+            "otherEntityName": "fund",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "country"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "countryName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170502161111",
+    "entityTableName": "country",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

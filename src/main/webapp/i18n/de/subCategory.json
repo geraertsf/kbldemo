@@ -1,0 +1,22 @@
+{
+    "kbldemoApp": {
+        "subCategory" : {
+            "home": {
+                "title": "Sub Categories",
+                "createLabel": "Sub Category erstellen",
+                "createOrEditLabel": "Sub Category erstellen oder bearbeiten"
+            },
+            "created": "Sub Category erstellt mit ID {{ param }}",
+            "updated": "Sub Category aktualisiert mit ID {{ param }}",
+            "deleted": "Sub Category gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Sub Category {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Sub Category"
+            },
+            "name": "Name",
+            "fund": "Fund"
+        }
+    }
+}

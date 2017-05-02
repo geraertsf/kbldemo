@@ -1,0 +1,23 @@
+{
+    "kbldemoApp": {
+        "vniHistory" : {
+            "home": {
+                "title": "Vni Histories",
+                "createLabel": "Vni History erstellen",
+                "createOrEditLabel": "Vni History erstellen oder bearbeiten"
+            },
+            "created": "Vni History erstellt mit ID {{ param }}",
+            "updated": "Vni History aktualisiert mit ID {{ param }}",
+            "deleted": "Vni History gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Vni History {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Vni History"
+            },
+            "date": "Date",
+            "value": "Value",
+            "fund": "Fund"
+        }
+    }
+}

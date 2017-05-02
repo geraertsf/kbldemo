@@ -40,6 +40,17 @@ public class CacheConfiguration {
             cm.createCache(lu.kbl.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(lu.kbl.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(lu.kbl.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Category.class.getName(), jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Category.class.getName() + ".funds", jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.SubCategory.class.getName(), jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.SubCategory.class.getName() + ".funds", jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Currency.class.getName(), jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Fund.class.getName(), jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Fund.class.getName() + ".vnis", jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Fund.class.getName() + ".countries", jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.VniHistory.class.getName(), jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Country.class.getName(), jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Country.class.getName() + ".funds", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

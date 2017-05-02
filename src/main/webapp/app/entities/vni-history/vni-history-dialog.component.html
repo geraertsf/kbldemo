@@ -1,0 +1,45 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myVniHistoryLabel" jhiTranslate="kbldemoApp.vniHistory.home.createOrEditLabel">Create or edit a Vni History</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!vniHistory.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="vniHistory.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="kbldemoApp.vniHistory.date" for="field_date">Date</label>
+            <div class="d-flex">
+                <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="vniHistory.date"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="kbldemoApp.vniHistory.value" for="field_value">Value</label>
+            <input type="number" class="form-control" name="value" id="field_value"
+                [(ngModel)]="vniHistory.value"
+             />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="kbldemoApp.vniHistory.fund" for="field_fund">Fund</label>
+            <select class="form-control" id="field_fund" name="fund" [(ngModel)]="vniHistory.fund" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="fundOption.id === vniHistory.fund?.id ? vniHistory.fund : fundOption" *ngFor="let fundOption of funds; trackBy: trackFundById">{{fundOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

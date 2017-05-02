@@ -1,0 +1,26 @@
+{
+    "kbldemoApp": {
+        "fund" : {
+            "home": {
+                "title": "Funds",
+                "createLabel": "Fund erstellen",
+                "createOrEditLabel": "Fund erstellen oder bearbeiten"
+            },
+            "created": "Fund erstellt mit ID {{ param }}",
+            "updated": "Fund aktualisiert mit ID {{ param }}",
+            "deleted": "Fund gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Fund {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Fund"
+            },
+            "range": "Range",
+            "name": "Name",
+            "category": "Category",
+            "subCategory": "Sub Category",
+            "vni": "Vni",
+            "country": "Country"
+        }
+    }
+}
