@@ -1,0 +1,47 @@
+entity Category {
+	name String required
+}
+
+entity SubCategory {
+	name String required
+}
+
+entity Currency {
+	name String required,
+    code String required
+}
+
+entity Fund {
+	range String required,
+    name String required,
+
+}
+
+entity VniHistory{
+	date ZonedDateTime,
+    value BigDecimal
+}
+
+
+entity Country {
+	countryName String
+}
+
+relationship ManyToMany {
+	Fund{country(countryName)} to Country{fund}
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Category{fund} to Fund,
+	SubCategory{fund} to Fund,
+    Fund{Vni} to VniHistory
+}
+
+// Set pagination options
+paginate Fund, VniHistory  with infinite-scroll
+paginate Country with pagination
+
+
+// Set service options to all except few
+service all with serviceImpl except Category, SubCategory, Currency
