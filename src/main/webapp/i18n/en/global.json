@@ -5,6 +5,7 @@
         "menu": {
             "home": "Home",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+            "funds": "Funds",
             "entities": {
                 "main": "Entities",
                 "category": "Category",
@@ -88,7 +89,7 @@
             "id": "ID"
         },
         "ribbon": {
-            "dev":"Development"
+            "dev": "Development"
         }
     },
     "entity": {
