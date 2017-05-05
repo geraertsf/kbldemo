@@ -15,7 +15,8 @@
             "detail": {
                 "title": "Country"
             },
-            "countryName": "Country Name",
+            "code": "Code",
+            "name": "Name",
             "fund": "Fund"
         }
     }

@@ -13,9 +13,15 @@
                    [(ngModel)]="country.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="kbldemoApp.country.countryName" for="field_countryName">Country Name</label>
-            <input type="text" class="form-control" name="countryName" id="field_countryName"
-                [(ngModel)]="country.countryName"
+            <label class="form-control-label" jhiTranslate="kbldemoApp.country.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="country.code"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="kbldemoApp.country.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="country.name"
              />
         </div>
 

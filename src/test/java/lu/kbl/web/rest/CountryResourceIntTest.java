@@ -38,8 +38,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = KbldemoApp.class)
 public class CountryResourceIntTest {
 
-    private static final String DEFAULT_COUNTRY_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_COUNTRY_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
 
     @Autowired
     private CountryRepository countryRepository;
@@ -81,7 +84,8 @@ public class CountryResourceIntTest {
      */
     public static Country createEntity(EntityManager em) {
         Country country = new Country()
-            .countryName(DEFAULT_COUNTRY_NAME);
+            .code(DEFAULT_CODE)
+            .name(DEFAULT_NAME);
         return country;
     }
 
@@ -105,7 +109,8 @@ public class CountryResourceIntTest {
         List<Country> countryList = countryRepository.findAll();
         assertThat(countryList).hasSize(databaseSizeBeforeCreate + 1);
         Country testCountry = countryList.get(countryList.size() - 1);
-        assertThat(testCountry.getCountryName()).isEqualTo(DEFAULT_COUNTRY_NAME);
+        assertThat(testCountry.getCode()).isEqualTo(DEFAULT_CODE);
+        assertThat(testCountry.getName()).isEqualTo(DEFAULT_NAME);
     }
 
     @Test
@@ -138,7 +143,8 @@ public class CountryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(country.getId().intValue())))
-            .andExpect(jsonPath("$.[*].countryName").value(hasItem(DEFAULT_COUNTRY_NAME.toString())));
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
     @Test
@@ -152,7 +158,8 @@ public class CountryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(country.getId().intValue()))
-            .andExpect(jsonPath("$.countryName").value(DEFAULT_COUNTRY_NAME.toString()));
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
 
     @Test
@@ -174,7 +181,8 @@ public class CountryResourceIntTest {
         // Update the country
         Country updatedCountry = countryRepository.findOne(country.getId());
         updatedCountry
-            .countryName(UPDATED_COUNTRY_NAME);
+            .code(UPDATED_CODE)
+            .name(UPDATED_NAME);
 
         restCountryMockMvc.perform(put("/api/countries")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -185,7 +193,8 @@ public class CountryResourceIntTest {
         List<Country> countryList = countryRepository.findAll();
         assertThat(countryList).hasSize(databaseSizeBeforeUpdate);
         Country testCountry = countryList.get(countryList.size() - 1);
-        assertThat(testCountry.getCountryName()).isEqualTo(UPDATED_COUNTRY_NAME);
+        assertThat(testCountry.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testCountry.getName()).isEqualTo(UPDATED_NAME);
     }
 
     @Test

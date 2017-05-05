@@ -11,7 +11,11 @@
     ],
     "fields": [
         {
-            "fieldName": "countryName",
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
             "fieldType": "String"
         }
     ],

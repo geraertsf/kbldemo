@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="20170505155310-1" author="kbl">
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/currency.csv"
+                  separator=";"
+                  tableName="currency"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/category.csv"
+                  separator=";"
+                  tableName="category"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/sub_category.csv"
+                  separator=";"
+                  tableName="sub_category"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/country.csv"
+                  separator=";"
+                  tableName="country"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/fund.csv"
+                  separator=";"
+                  tableName="fund"/>
+
+    </changeSet>
+
+
+</databaseChangeLog>

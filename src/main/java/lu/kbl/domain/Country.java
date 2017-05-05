@@ -25,8 +25,11 @@ public class Country implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "country_name")
-    private String countryName;
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "name")
+    private String name;
 
     @ManyToMany(mappedBy = "countries")
     @JsonIgnore
@@ -41,17 +44,30 @@ public class Country implements Serializable {
         this.id = id;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getCode() {
+        return code;
     }
 
-    public Country countryName(String countryName) {
-        this.countryName = countryName;
+    public Country code(String code) {
+        this.code = code;
         return this;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Country name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<Fund> getFunds() {
@@ -103,7 +119,8 @@ public class Country implements Serializable {
     public String toString() {
         return "Country{" +
             "id=" + id +
-            ", countryName='" + countryName + "'" +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
             '}';
     }
 }

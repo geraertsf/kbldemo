@@ -13,8 +13,7 @@ entity Currency {
 
 entity Fund {
 	range String required,
-    name String required,
-
+    name String required
 }
 
 entity VniHistory{
@@ -24,7 +23,8 @@ entity VniHistory{
 
 
 entity Country {
-	countryName String
+	code String,
+	name String
 }
 
 relationship ManyToMany {
@@ -32,7 +32,7 @@ relationship ManyToMany {
 }
 
 // defining multiple OneToMany relationships with comments
-relationship OneToMany {
+    relationship OneToMany {
 	Category{fund} to Fund,
 	SubCategory{fund} to Fund,
     Fund{Vni} to VniHistory
