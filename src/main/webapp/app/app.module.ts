@@ -23,6 +23,7 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import {FundsModule} from './funds/funds.module';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import {
         KbldemoHomeModule,
         KbldemoAdminModule,
         KbldemoAccountModule,
-        KbldemoEntityModule
+        KbldemoEntityModule,
+        FundsModule
     ],
     declarations: [
         JhiMainComponent,
