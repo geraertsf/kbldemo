@@ -32,6 +32,16 @@
                   separator=";"
                   tableName="fund"/>
 
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/fund_country.csv"
+                  separator=";"
+                  tableName="fund_country"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/vni_history.csv"
+                  separator=";"
+                  tableName="vni_history"/>
+
     </changeSet>
 
 
