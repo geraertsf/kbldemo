@@ -43,7 +43,7 @@ public class Fund implements Serializable {
     @OneToMany(mappedBy = "fund")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<VniHistory> vnis = new HashSet<>();
+    private Set<VniHistory> vniHistories = new HashSet<>();
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -112,29 +112,29 @@ public class Fund implements Serializable {
         this.subCategory = subCategory;
     }
 
-    public Set<VniHistory> getVnis() {
-        return vnis;
+    public Set<VniHistory> getVniHistories() {
+        return vniHistories;
     }
 
-    public Fund vnis(Set<VniHistory> vniHistories) {
-        this.vnis = vniHistories;
+    public Fund vniHistories(Set<VniHistory> vniHistories) {
+        this.vniHistories = vniHistories;
         return this;
     }
 
-    public Fund addVni(VniHistory vniHistory) {
-        this.vnis.add(vniHistory);
+    public Fund addVniHistory(VniHistory vniHistory) {
+        this.vniHistories.add(vniHistory);
         vniHistory.setFund(this);
         return this;
     }
 
-    public Fund removeVni(VniHistory vniHistory) {
-        this.vnis.remove(vniHistory);
+    public Fund removeVniHistory(VniHistory vniHistory) {
+        this.vniHistories.remove(vniHistory);
         vniHistory.setFund(null);
         return this;
     }
 
-    public void setVnis(Set<VniHistory> vniHistories) {
-        this.vnis = vniHistories;
+    public void setVniHistories(Set<VniHistory> vniHistories) {
+        this.vniHistories = vniHistories;
     }
 
     public Set<Country> getCountries() {

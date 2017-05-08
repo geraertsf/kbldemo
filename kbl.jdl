@@ -28,14 +28,14 @@ entity Country {
 }
 
 relationship ManyToMany {
-	Fund{country(countryName)} to Country{fund}
+	Fund{country(name)} to Country{fund}
 }
 
 // defining multiple OneToMany relationships with comments
     relationship OneToMany {
 	Category{fund} to Fund,
 	SubCategory{fund} to Fund,
-    Fund{Vni} to VniHistory
+    Fund{vniHistory} to VniHistory
 }
 
 // Set pagination options

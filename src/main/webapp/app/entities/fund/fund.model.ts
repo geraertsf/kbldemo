@@ -9,7 +9,7 @@ export class Fund {
         public name?: string,
         public category?: Category,
         public subCategory?: SubCategory,
-        public vni?: VniHistory,
+        public vniHistory?: VniHistory,
         public country?: Country,
     ) {
     }

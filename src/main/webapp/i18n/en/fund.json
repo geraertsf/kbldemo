@@ -19,7 +19,7 @@
             "name": "Name",
             "category": "Category",
             "subCategory": "Sub Category",
-            "vni": "Vni",
+            "vniHistory": "Vni History",
             "country": "Country"
         }
     }

@@ -27,7 +27,7 @@
         <dt><span jhiTranslate="kbldemoApp.fund.country">Country</span></dt>
         <dd>
             <span *ngFor="let country of fund.countries; let last = last">
-                <a [routerLink]="['/country', country?.id ]">{{country.countryName}}</a>{{last ? '' : ', '}}
+                <a [routerLink]="['/country', country?.id ]">{{country.name}}</a>{{last ? '' : ', '}}
             </span>
         </dd>
     </dl>

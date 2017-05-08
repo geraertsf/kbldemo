@@ -15,7 +15,7 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "vni",
+            "relationshipName": "vniHistory",
             "otherEntityName": "vniHistory",
             "otherEntityRelationshipName": "fund"
         },
@@ -24,7 +24,7 @@
             "otherEntityRelationshipName": "fund",
             "relationshipName": "country",
             "otherEntityName": "country",
-            "otherEntityField": "countryName",
+            "otherEntityField": "name",
             "ownerSide": true
         }
     ],

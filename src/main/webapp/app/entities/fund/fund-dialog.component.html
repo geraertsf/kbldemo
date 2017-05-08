@@ -54,7 +54,7 @@
         <div class="form-group">
             <label jhiTranslate="kbldemoApp.fund.country" for="field_country">Country</label>
             <select class="form-control" id="field_country" multiple name="country" [(ngModel)]="fund.countries">
-                <option [ngValue]="getSelected(fund.countries, countryOption)" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.countryName}}</option>
+                <option [ngValue]="getSelected(fund.countries, countryOption)" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.name}}</option>
             </select>
         </div>
     </div>
