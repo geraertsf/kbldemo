@@ -10,6 +10,7 @@ import { FundPopupService } from './fund-popup.service';
 import { FundService } from './fund.service';
 import { Category, CategoryService } from '../category';
 import { SubCategory, SubCategoryService } from '../sub-category';
+import { Currency, CurrencyService } from '../currency';
 import { Country, CountryService } from '../country';
 
 @Component({
@@ -26,6 +27,8 @@ export class FundDialogComponent implements OnInit {
 
     subcategories: SubCategory[];
 
+    currencies: Currency[];
+
     countries: Country[];
     constructor(
         public activeModal: NgbActiveModal,
@@ -34,6 +37,7 @@ export class FundDialogComponent implements OnInit {
         private fundService: FundService,
         private categoryService: CategoryService,
         private subCategoryService: SubCategoryService,
+        private currencyService: CurrencyService,
         private countryService: CountryService,
         private eventManager: EventManager
     ) {
@@ -47,6 +51,8 @@ export class FundDialogComponent implements OnInit {
             (res: Response) => { this.categories = res.json(); }, (res: Response) => this.onError(res.json()));
         this.subCategoryService.query().subscribe(
             (res: Response) => { this.subcategories = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.currencyService.query().subscribe(
+            (res: Response) => { this.currencies = res.json(); }, (res: Response) => this.onError(res.json()));
         this.countryService.query().subscribe(
             (res: Response) => { this.countries = res.json(); }, (res: Response) => this.onError(res.json()));
     }
@@ -92,6 +98,10 @@ export class FundDialogComponent implements OnInit {
     }
 
     trackSubCategoryById(index: number, item: SubCategory) {
+        return item.id;
+    }
+
+    trackCurrencyById(index: number, item: Currency) {
         return item.id;
     }
 

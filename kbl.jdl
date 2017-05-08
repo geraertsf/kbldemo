@@ -35,6 +35,7 @@ relationship ManyToMany {
     relationship OneToMany {
 	Category{fund} to Fund,
 	SubCategory{fund} to Fund,
+	Currency{fund} to Fund,
     Fund{vniHistory} to VniHistory
 }
 

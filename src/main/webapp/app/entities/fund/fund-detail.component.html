@@ -24,6 +24,12 @@
                 <a [routerLink]="['/sub-category', fund.subCategory?.id]">{{fund.subCategory?.id}}</a>
             </div>
         </dd>
+        <dt><span jhiTranslate="kbldemoApp.fund.currency">Currency</span></dt>
+        <dd>
+            <div *ngIf="fund.currency">
+                <a [routerLink]="['/currency', fund.currency?.id]">{{fund.currency?.id}}</a>
+            </div>
+        </dd>
         <dt><span jhiTranslate="kbldemoApp.fund.country">Country</span></dt>
         <dd>
             <span *ngFor="let country of fund.countries; let last = last">

@@ -16,7 +16,8 @@
                 "title": "Currency"
             },
             "name": "Name",
-            "code": "Code"
+            "code": "Code",
+            "fund": "Fund"
         }
     }
 }

@@ -52,6 +52,7 @@ public class CacheConfiguration {
             cm.createCache(lu.kbl.domain.Country.class.getName(), jcacheConfiguration);
             cm.createCache(lu.kbl.domain.Country.class.getName() + ".funds", jcacheConfiguration);
             cm.createCache(lu.kbl.domain.Fund.class.getName() + ".vniHistories", jcacheConfiguration);
+            cm.createCache(lu.kbl.domain.Currency.class.getName() + ".funds", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

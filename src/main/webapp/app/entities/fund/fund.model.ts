@@ -1,5 +1,6 @@
 import { Category } from '../category';
 import { SubCategory } from '../sub-category';
+import { Currency } from '../currency';
 import { VniHistory } from '../vni-history';
 import { Country } from '../country';
 export class Fund {
@@ -9,6 +10,7 @@ export class Fund {
         public name?: string,
         public category?: Category,
         public subCategory?: SubCategory,
+        public currency?: Currency,
         public vniHistory?: VniHistory,
         public country?: Country,
     ) {

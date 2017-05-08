@@ -52,6 +52,13 @@
             </select>
         </div>
         <div class="form-group">
+            <label jhiTranslate="kbldemoApp.fund.currency" for="field_currency">Currency</label>
+            <select class="form-control" id="field_currency" name="currency" [(ngModel)]="fund.currency" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="currencyOption.id === fund.currency?.id ? fund.currency : currencyOption" *ngFor="let currencyOption of currencies; trackBy: trackCurrencyById">{{currencyOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label jhiTranslate="kbldemoApp.fund.country" for="field_country">Country</label>
             <select class="form-control" id="field_country" multiple name="country" [(ngModel)]="fund.countries">
                 <option [ngValue]="getSelected(fund.countries, countryOption)" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.name}}</option>

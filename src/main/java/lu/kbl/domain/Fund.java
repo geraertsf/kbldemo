@@ -40,6 +40,9 @@ public class Fund implements Serializable {
     @ManyToOne
     private SubCategory subCategory;
 
+    @ManyToOne
+    private Currency currency;
+
     @OneToMany(mappedBy = "fund")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -110,6 +113,19 @@ public class Fund implements Serializable {
 
     public void setSubCategory(SubCategory subCategory) {
         this.subCategory = subCategory;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public Fund currency(Currency currency) {
+        this.currency = currency;
+        return this;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     public Set<VniHistory> getVniHistories() {

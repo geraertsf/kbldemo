@@ -1,11 +1,14 @@
 package lu.kbl.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -30,6 +33,11 @@ public class Currency implements Serializable {
     @NotNull
     @Column(name = "code", nullable = false)
     private String code;
+
+    @OneToMany(mappedBy = "currency")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Fund> funds = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -63,6 +71,31 @@ public class Currency implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Set<Fund> getFunds() {
+        return funds;
+    }
+
+    public Currency funds(Set<Fund> funds) {
+        this.funds = funds;
+        return this;
+    }
+
+    public Currency addFund(Fund fund) {
+        this.funds.add(fund);
+        fund.setCurrency(this);
+        return this;
+    }
+
+    public Currency removeFund(Fund fund) {
+        this.funds.remove(fund);
+        fund.setCurrency(null);
+        return this;
+    }
+
+    public void setFunds(Set<Fund> funds) {
+        this.funds = funds;
     }
 
     @Override

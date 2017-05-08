@@ -20,6 +20,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="sub_category"/>
 
+        <addForeignKeyConstraint baseColumnNames="currency_id"
+                                 baseTableName="fund"
+                                 constraintName="fk_fund_currency_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="currency"/>
+
         <addForeignKeyConstraint baseColumnNames="funds_id"
                                  baseTableName="fund_country"
                                  constraintName="fk_fund_country_funds_id"

@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "fund",
+            "otherEntityName": "fund",
+            "otherEntityRelationshipName": "currency"
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",

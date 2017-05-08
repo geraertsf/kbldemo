@@ -21,6 +21,7 @@
             <th jhiSortBy="name"><span jhiTranslate="kbldemoApp.fund.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="category.id"><span jhiTranslate="kbldemoApp.fund.category">Category</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="subCategory.id"><span jhiTranslate="kbldemoApp.fund.subCategory">Sub Category</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currency.id"><span jhiTranslate="kbldemoApp.fund.currency">Currency</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -37,6 +38,11 @@
                 <td>
                     <div *ngIf="fund.subCategory">
                         <a [routerLink]="['../sub-category', fund.subCategory?.id ]" >{{fund.subCategory?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="fund.currency">
+                        <a [routerLink]="['../currency', fund.currency?.id ]" >{{fund.currency?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">
