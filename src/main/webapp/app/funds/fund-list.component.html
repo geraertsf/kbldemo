@@ -46,7 +46,8 @@
                 <td>{{countryList(fund)}}</td>
                 <td>
                     <div *ngIf="fund.currency">
-                        <a [routerLink]="['../currency', fund.currency?.id ]" >{{fund.currency?.id}}</a>
+                        <!--<a [routerLink]="['../currency', fund.currency?.id ]" >{{fund.currency?.code}}</a>-->
+                        {{fund.currency?.code}}
                     </div>
                 </td>
             </tr>
