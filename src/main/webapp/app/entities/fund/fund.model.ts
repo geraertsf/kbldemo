@@ -11,6 +11,7 @@ export class Fund {
                 public subCategory?: SubCategory,
                 public currency?: Currency,
                 public vniHistory?: VniHistory,
+                public lastVniValue?: number,
                 public country?: Country,
                 public countries?: Country[]) {
 

@@ -65,6 +65,9 @@ public class FundServiceImpl implements FundService{
     public Page<Fund> findAllWithCountries(Pageable pageable) {
         log.debug("Request to get all Funds");
         Page<Fund> result = fundRepository.findAllWithEagerRelationships(pageable);
+
+
+
         return result;
     }
 

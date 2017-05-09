@@ -5,6 +5,7 @@ import lu.kbl.KbldemoApp;
 import lu.kbl.domain.Fund;
 import lu.kbl.repository.FundRepository;
 import lu.kbl.service.FundService;
+import lu.kbl.service.VniHistoryService;
 import lu.kbl.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -51,6 +52,10 @@ public class FundResourceIntTest {
     private FundService fundService;
 
     @Autowired
+    private VniHistoryService vniHistoryService;
+
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -69,7 +74,7 @@ public class FundResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        FundResource fundResource = new FundResource(fundService);
+        FundResource fundResource = new FundResource(fundService,vniHistoryService);
         this.restFundMockMvc = MockMvcBuilders.standaloneSetup(fundResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

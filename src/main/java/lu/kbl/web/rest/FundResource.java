@@ -3,6 +3,7 @@ package lu.kbl.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import lu.kbl.domain.Fund;
 import lu.kbl.service.FundService;
+import lu.kbl.service.VniHistoryService;
 import lu.kbl.web.rest.util.HeaderUtil;
 import lu.kbl.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
@@ -34,9 +35,11 @@ public class FundResource {
     private static final String ENTITY_NAME = "fund";
 
     private final FundService fundService;
+    private final VniHistoryService vniHistoryService;
 
-    public FundResource(FundService fundService) {
+    public FundResource(FundService fundService, VniHistoryService vniHistoryService) {
         this.fundService = fundService;
+        this.vniHistoryService = vniHistoryService;
     }
 
     /**
@@ -107,6 +110,11 @@ public class FundResource {
     public ResponseEntity<List<Fund>> getAllFundsWithCounrtries(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Funds");
         Page<Fund> page = fundService.findAllWithCountries(pageable);
+
+        page.forEach(fund -> {
+            fund.setLastVniValue(vniHistoryService.findLasVniForAFund(fund.getId()).getValue());
+        });
+
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/funds");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

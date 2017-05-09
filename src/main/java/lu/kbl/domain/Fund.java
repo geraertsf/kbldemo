@@ -8,6 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -57,14 +58,13 @@ public class Fund implements Serializable {
     private Set<Country> countries = new HashSet<>();
 
     @JsonInclude()
-    @Transient
-    private Long lastVniValue;
+    private transient BigDecimal lastVniValue;
 
-    public Long getLastVniValue() {
+    public BigDecimal getLastVniValue() {
         return lastVniValue;
     }
 
-    public void setLastVniValue(Long lastVniValue) {
+    public void setLastVniValue(BigDecimal lastVniValue) {
         this.lastVniValue = lastVniValue;
     }
 
