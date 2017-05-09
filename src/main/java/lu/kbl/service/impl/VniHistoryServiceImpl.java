@@ -60,6 +60,12 @@ public class VniHistoryServiceImpl implements VniHistoryService{
         return allByFundId;
     }
 
+    @Override
+    public VniHistory findLasVniForAFund(Long fundId){
+
+        final List<VniHistory> dateDesc = vniHistoryRepository.findAllByFund_IdOrderByDateDesc(fundId);
+        return dateDesc.get(0);
+    }
     /**
      *  Get one vniHistory by id.
      *

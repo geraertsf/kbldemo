@@ -32,6 +32,12 @@ public interface VniHistoryService {
      */
     List<VniHistory> findAll(Long fundId);
 
+    /**
+     * Get the last vni for a fund.
+     * @param fundId id of the fund
+     * @return the entity
+     */
+    public VniHistory findLasVniForAFund(Long fundId);
 
     /**
      *  Get the "id" vniHistory.

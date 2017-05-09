@@ -22,8 +22,9 @@
                 <th jhiSortBy="name"><span jhiTranslate="kbldemoApp.fund.name">Name</span> <span
                     class="fa fa-sort"></span></th>
                 <th><span jhiTranslate="kbldemoApp.fund.country">Countries</span></th>
-                <th><span jhiTranslate="kbldemoApp.fund.currency">Countries</span></th>
-                <th></th>
+                <th><span jhiTranslate="kbldemoApp.fund.vni">VNI</span></th>
+                <th><span jhiTranslate="kbldemoApp.fund.currency">Currency</span></th>
+                <!--<th></th>-->
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
@@ -44,6 +45,7 @@
                 <td>{{fund.range}}</td>
                 <td>{{fund.name}}</td>
                 <td>{{countryList(fund)}}</td>
+                <td>VNI shit</td>
                 <td>
                     <div *ngIf="fund.currency">
                         <!--<a [routerLink]="['../currency', fund.currency?.id ]" >{{fund.currency?.code}}</a>-->

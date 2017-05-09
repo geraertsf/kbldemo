@@ -14,4 +14,6 @@ public interface VniHistoryRepository extends JpaRepository<VniHistory,Long> {
 
     List<VniHistory> findAllByFund_Id(Long fundId);
 
+    List<VniHistory> findAllByFund_IdOrderByDateDesc(Long fundId);
+
 }

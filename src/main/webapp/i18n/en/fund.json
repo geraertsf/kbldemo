@@ -21,7 +21,8 @@
             "subCategory": "Sub Category",
             "currency": "Currency",
             "vniHistory": "Vni History",
-            "country": "Country"
+            "country": "Country",
+            "vni": "VNI"
         }
     }
 }

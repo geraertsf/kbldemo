@@ -106,7 +106,7 @@ public class VniHistoryResource {
     public ResponseEntity<List<VniHistory>> getAllVniHistoriesForAFund(@PathVariable Long id) {
         log.debug("REST request to get a page of VniHistories");
         final List<VniHistory> vniHistoryList = vniHistoryService.findAll(id);
-        return new ResponseEntity<>(vniHistoryList, null, HttpStatus.OK);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(vniHistoryList));
     }
 
     /**
@@ -120,6 +120,20 @@ public class VniHistoryResource {
     public ResponseEntity<VniHistory> getVniHistory(@PathVariable Long id) {
         log.debug("REST request to get VniHistory : {}", id);
         VniHistory vniHistory = vniHistoryService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(vniHistory));
+    }
+
+    /**
+     * GET /vni-histories/last/fund/:id : get the "id" vniHistory.
+     *
+     * @param id the id of the vniHistory to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the vniHistory, or with status 404 (Not Found)
+     */
+    @GetMapping("/vni-histories/last/fund/{id}")
+    @Timed
+    public ResponseEntity<VniHistory> getLastVniHistory(@PathVariable Long id) {
+        log.debug("REST request to get VniHistory : {}", id);
+        VniHistory vniHistory = vniHistoryService.findLasVniForAFund(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(vniHistory));
     }
 
