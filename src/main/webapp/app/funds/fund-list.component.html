@@ -30,12 +30,14 @@
             <tr *ngFor="let fund of funds ;trackBy: trackId">
                 <td>
                     <div *ngIf="fund.category">
-                        <a [routerLink]="['../category', fund.category?.id ]" >{{fund.category?.name}}</a>
+                        <!--<a [routerLink]="['../category', fund.category?.id ]" >{{fund.category?.name}}</a>-->
+                        {{fund.category?.name}}
                     </div>
                 </td>
                 <td>
                     <div *ngIf="fund.subCategory">
-                        <a [routerLink]="['../sub-category', fund.subCategory?.id ]" >{{fund.subCategory?.name}}</a>
+                        {{fund.subCategory?.name}}
+                        <!--<a [routerLink]="['../sub-category', fund.subCategory?.id ]" >{{fund.subCategory?.name}}</a>-->
                     </div>
                 </td>
                 <!--<td><a [routerLink]="['../fund', fund.id ]">{{fund.id}}</a></td>-->
