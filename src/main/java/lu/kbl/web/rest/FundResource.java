@@ -32,7 +32,7 @@ public class FundResource {
     private final Logger log = LoggerFactory.getLogger(FundResource.class);
 
     private static final String ENTITY_NAME = "fund";
-        
+
     private final FundService fundService;
 
     public FundResource(FundService fundService) {
@@ -92,6 +92,21 @@ public class FundResource {
     public ResponseEntity<List<Fund>> getAllFunds(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Funds");
         Page<Fund> page = fundService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/funds");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET  /funds/countries : get all the funds with countries.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of funds in body
+     */
+    @GetMapping("/funds/countries")
+    @Timed
+    public ResponseEntity<List<Fund>> getAllFundsWithCounrtries(@ApiParam Pageable pageable) {
+        log.debug("REST request to get a page of Funds");
+        Page<Fund> page = fundService.findAllWithCountries(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/funds");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -53,7 +53,7 @@ export class FundListComponent implements OnInit {
 
 
     loadAll() {
-        this.fundService.query({
+        this.fundService.queryWithCountries({
             page: this.page,
             size: this.itemsPerPage,
             sort: this.sort()
@@ -67,10 +67,29 @@ export class FundListComponent implements OnInit {
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
+        console.log(data);
         for (let i = 0; i < data.length; i++) {
             this.funds.push(data[i]);
         }
     }
+
+    public countryList(fund: Fund): Fund {
+
+        console.log(fund);
+
+        let countriesList = '';
+        fund.countries.forEach((item,index,array) => {
+            countriesList = countriesList + item.code;
+
+            if(index !== array.length - 1){
+                countriesList = countriesList + ', ';
+            }
+        });
+
+        console.log(`Country list : ${countriesList}`);
+        return countriesList;
+    };
+
 
     private onError(error) {
         this.alertService.error(error.message, null, null);

@@ -7,6 +7,7 @@ import { Fund } from './fund.model';
 export class FundService {
 
     private resourceUrl = 'api/funds';
+    private resourceUrlWithCountries = 'api/funds/countries';
 
     constructor(private http: Http) { }
 
@@ -32,8 +33,12 @@ export class FundService {
 
     query(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
-        return this.http.get(this.resourceUrl, options)
-        ;
+        return this.http.get(this.resourceUrl, options);
+    }
+
+    queryWithCountries(req?: any): Observable<Response> {
+        const options = this.createRequestOption(req);
+        return this.http.get(this.resourceUrlWithCountries, options);
     }
 
     delete(id: number): Observable<Response> {

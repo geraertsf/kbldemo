@@ -21,6 +21,8 @@
                     class="fa fa-sort"></span></th>
                 <th jhiSortBy="name"><span jhiTranslate="kbldemoApp.fund.name">Name</span> <span
                     class="fa fa-sort"></span></th>
+                <th><span jhiTranslate="kbldemoApp.fund.country">Countries</span></th>
+                <th><span jhiTranslate="kbldemoApp.fund.currency">Countries</span></th>
                 <th></th>
             </tr>
             </thead>
@@ -39,6 +41,7 @@
                 <!--<td><a [routerLink]="['../fund', fund.id ]">{{fund.id}}</a></td>-->
                 <td>{{fund.range}}</td>
                 <td>{{fund.name}}</td>
+                <td>{{countryList(fund)}}</td>
                 <td>
                     <div *ngIf="fund.currency">
                         <a [routerLink]="['../currency', fund.currency?.id ]" >{{fund.currency?.id}}</a>

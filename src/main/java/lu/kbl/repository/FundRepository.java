@@ -2,6 +2,8 @@ package lu.kbl.repository;
 
 import lu.kbl.domain.Fund;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
@@ -18,5 +20,9 @@ public interface FundRepository extends JpaRepository<Fund,Long> {
 
     @Query("select fund from Fund fund left join fetch fund.countries where fund.id =:id")
     Fund findOneWithEagerRelationships(@Param("id") Long id);
+
+    @Query(value ="select distinct fund from Fund fund left join fetch fund.countries",
+    countQuery = "select distinct fund from Fund fund left join fetch fund.countries")
+    Page<Fund> findAllWithEagerRelationships(Pageable pageable);
 
 }

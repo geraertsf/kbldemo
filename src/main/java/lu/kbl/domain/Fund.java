@@ -1,6 +1,7 @@
 package lu.kbl.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -54,6 +55,18 @@ public class Fund implements Serializable {
                joinColumns = @JoinColumn(name="funds_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="countries_id", referencedColumnName="id"))
     private Set<Country> countries = new HashSet<>();
+
+    @JsonInclude()
+    @Transient
+    private Long lastVniValue;
+
+    public Long getLastVniValue() {
+        return lastVniValue;
+    }
+
+    public void setLastVniValue(Long lastVniValue) {
+        this.lastVniValue = lastVniValue;
+    }
 
     public Long getId() {
         return id;

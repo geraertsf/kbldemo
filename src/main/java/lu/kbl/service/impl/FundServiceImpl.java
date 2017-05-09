@@ -20,7 +20,7 @@ import java.util.List;
 public class FundServiceImpl implements FundService{
 
     private final Logger log = LoggerFactory.getLogger(FundServiceImpl.class);
-    
+
     private final FundRepository fundRepository;
 
     public FundServiceImpl(FundRepository fundRepository) {
@@ -42,7 +42,7 @@ public class FundServiceImpl implements FundService{
 
     /**
      *  Get all the funds.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -53,6 +53,22 @@ public class FundServiceImpl implements FundService{
         Page<Fund> result = fundRepository.findAll(pageable);
         return result;
     }
+
+    /**
+     *  Get all the funds.
+     *
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Fund> findAllWithCountries(Pageable pageable) {
+        log.debug("Request to get all Funds");
+        Page<Fund> result = fundRepository.findAllWithEagerRelationships(pageable);
+        return result;
+    }
+
+
 
     /**
      *  Get one fund by id.

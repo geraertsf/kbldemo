@@ -20,11 +20,19 @@ public interface FundService {
 
     /**
      *  Get all the funds.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<Fund> findAll(Pageable pageable);
+
+    /**
+     *  Get all the funds with countries.
+     *
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    public Page<Fund> findAllWithCountries(Pageable pageable);
 
     /**
      *  Get the "id" fund.
