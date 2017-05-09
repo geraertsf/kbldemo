@@ -12,4 +12,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface VniHistoryRepository extends JpaRepository<VniHistory,Long> {
 
+    List<VniHistory> findAllByFund_Id(Long fundId);
+
 }

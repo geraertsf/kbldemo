@@ -20,7 +20,7 @@ import java.util.List;
 public class VniHistoryServiceImpl implements VniHistoryService{
 
     private final Logger log = LoggerFactory.getLogger(VniHistoryServiceImpl.class);
-    
+
     private final VniHistoryRepository vniHistoryRepository;
 
     public VniHistoryServiceImpl(VniHistoryRepository vniHistoryRepository) {
@@ -42,7 +42,7 @@ public class VniHistoryServiceImpl implements VniHistoryService{
 
     /**
      *  Get all the vniHistories.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -52,6 +52,12 @@ public class VniHistoryServiceImpl implements VniHistoryService{
         log.debug("Request to get all VniHistories");
         Page<VniHistory> result = vniHistoryRepository.findAll(pageable);
         return result;
+    }
+
+    @Override
+    public List<VniHistory> findAll(Long fundId) {
+        final List<VniHistory> allByFundId = vniHistoryRepository.findAllByFund_Id(fundId);
+        return allByFundId;
     }
 
     /**

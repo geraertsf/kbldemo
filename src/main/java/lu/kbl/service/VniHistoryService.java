@@ -20,11 +20,18 @@ public interface VniHistoryService {
 
     /**
      *  Get all the vniHistories.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<VniHistory> findAll(Pageable pageable);
+
+    /**
+     * Get all the vniHistories for a fund.
+     * @param fundId id of the fund
+     */
+    List<VniHistory> findAll(Long fundId);
+
 
     /**
      *  Get the "id" vniHistory.

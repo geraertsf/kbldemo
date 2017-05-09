@@ -31,7 +31,7 @@ public class VniHistoryResource {
     private final Logger log = LoggerFactory.getLogger(VniHistoryResource.class);
 
     private static final String ENTITY_NAME = "vniHistory";
-        
+
     private final VniHistoryService vniHistoryService;
 
     public VniHistoryResource(VniHistoryService vniHistoryService) {
@@ -93,6 +93,20 @@ public class VniHistoryResource {
         Page<VniHistory> page = vniHistoryService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/vni-histories");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+
+    }
+    /**
+     * GET  /vni-histories : get all the vniHistories.
+     *
+     * @param id the id of the fund that we want the vniHistory to retrieve
+     * @return the ResponseEntity with status 200 (OK) and the list of vniHistories in body
+     */
+    @GetMapping("/vni-histories/fund/{id}")
+    @Timed
+    public ResponseEntity<List<VniHistory>> getAllVniHistoriesForAFund(@PathVariable Long id) {
+        log.debug("REST request to get a page of VniHistories");
+        final List<VniHistory> vniHistoryList = vniHistoryService.findAll(id);
+        return new ResponseEntity<>(vniHistoryList, null, HttpStatus.OK);
     }
 
     /**
