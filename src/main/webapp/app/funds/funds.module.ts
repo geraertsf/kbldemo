@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-//import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+// import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {FUNDS_ROUTE} from './funds.route';
 import {RouterModule} from '@angular/router';
 import {FundListComponent} from './fund-list.component';

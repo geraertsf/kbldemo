@@ -8,18 +8,15 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class FundsService {
 
-
     private resourceUrl = 'api/vni-histories';
 
     constructor(private http: Http, private dateUtils: DateUtils) {
     }
 
-
     queryVni(fundId: number): Observable<Response> {
         return this.http.get(`${this.resourceUrl}/fund/${fundId}`)
             .map((res: any) => this.convertResponse(res));
     }
-
 
     private convertResponse(res: any): any {
         const jsonResponse = res.json();
@@ -30,6 +27,4 @@ export class FundsService {
         res._body = jsonResponse;
         return res;
     }
-
-
 }

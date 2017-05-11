@@ -23,8 +23,7 @@ export class FundVniComponent implements OnInit, OnDestroy {
     constructor(private route: ActivatedRoute,
                 private jhiLanguageService: JhiLanguageService,
                 private fundsService: FundsService,
-                private alertService: AlertService
-    ) {
+                private alertService: AlertService) {
         this.jhiLanguageService.setLocations(['vniHistory']);
         this.predicate = 'id';
         this.reverse = true;
@@ -35,7 +34,7 @@ export class FundVniComponent implements OnInit, OnDestroy {
         console.log('Initialization of FundVniComponent');
 
         this.subscription = this.route.params.subscribe((params) => {
-            this.fundId = params['id']
+            this.fundId = params['id'];
             this.loadAll(this.fundId);
         });
 
@@ -46,9 +45,11 @@ export class FundVniComponent implements OnInit, OnDestroy {
 
     private loadAll(id: number) {
         console.log(`Load vni for fund ${id}`);
-        //Load the vni Histories
+        // Load the vni Histories
         this.fundsService.queryVni(id).subscribe(
-            (res: Response) => {this.vniHistories = res.json()},
+            (res: Response) => {
+                this.vniHistories = res.json();
+            },
             (res: Response) => this.onError(res.json())
         );
 

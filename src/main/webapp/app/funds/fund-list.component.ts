@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AlertService, EventManager, JhiLanguageService, ParseLinks} from 'ng-jhipster';
 import {FundService} from '../entities/fund/fund.service';
 import {Fund} from '../entities/fund/fund.model';
@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
     templateUrl: './fund-list.component.html'
 })
-export class FundListComponent implements OnInit {
+export class FundListComponent implements OnInit, OnDestroy {
 
     funds: Fund[];
     page: any;
@@ -23,7 +23,6 @@ export class FundListComponent implements OnInit {
     links: any;
     currentAccount: any;
     eventSubscriber: Subscription;
-
 
     constructor(private jhiLanguageService: JhiLanguageService,
                 private fundService: FundService,
@@ -42,7 +41,6 @@ export class FundListComponent implements OnInit {
         this.jhiLanguageService.setLocations(['fund']);
     }
 
-
     ngOnInit(): void {
         this.loadAll();
         this.principal.identity().then((account) => {
@@ -50,7 +48,6 @@ export class FundListComponent implements OnInit {
         });
         this.registerChangeInFunds();
     }
-
 
     loadAll() {
         this.fundService.queryWithCountries({
@@ -63,7 +60,6 @@ export class FundListComponent implements OnInit {
         );
     }
 
-
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
@@ -75,17 +71,16 @@ export class FundListComponent implements OnInit {
     public countryList(fund: Fund): Fund {
 
         let countriesList = '';
-        fund.countries.forEach((item,index,array) => {
+        fund.countries.forEach((item, index, array) => {
             countriesList = countriesList + item.code;
 
-            if(index !== array.length - 1){
+            if (index !== array.length - 1) {
                 countriesList = countriesList + ', ';
             }
         });
 
         return countriesList;
     };
-
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
@@ -117,4 +112,8 @@ export class FundListComponent implements OnInit {
         return item.id;
     }
 
+    loadPage(page) {
+        this.page = page;
+        this.loadAll();
+    }
 }

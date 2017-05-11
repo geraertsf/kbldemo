@@ -14,8 +14,5 @@ export class Fund {
                 public lastVniValue?: number,
                 public country?: Country,
                 public countries?: Country[]) {
-
     }
-
-
 }
