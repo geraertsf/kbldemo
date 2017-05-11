@@ -20,8 +20,6 @@ export class FundVniComponent implements OnInit, OnDestroy {
     predicate: any;
     reverse: any;
 
-
-
     constructor(private route: ActivatedRoute,
                 private jhiLanguageService: JhiLanguageService,
                 private fundsService: FundsService,
@@ -33,7 +31,6 @@ export class FundVniComponent implements OnInit, OnDestroy {
 
     }
 
-
     ngOnInit(): void {
         console.log('Initialization of FundVniComponent');
 
@@ -43,7 +40,6 @@ export class FundVniComponent implements OnInit, OnDestroy {
         });
 
     }
-
 
     ngOnDestroy(): void {
     }
@@ -66,5 +62,7 @@ export class FundVniComponent implements OnInit, OnDestroy {
         this.loadAll(this.fundId);
     }
 
-
+    previousState() {
+        window.history.back();
+    }
 }
