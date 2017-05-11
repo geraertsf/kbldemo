@@ -67,15 +67,12 @@ export class FundListComponent implements OnInit {
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
-        console.log(data);
         for (let i = 0; i < data.length; i++) {
             this.funds.push(data[i]);
         }
     }
 
     public countryList(fund: Fund): Fund {
-
-        console.log(fund);
 
         let countriesList = '';
         fund.countries.forEach((item,index,array) => {
@@ -86,7 +83,6 @@ export class FundListComponent implements OnInit {
             }
         });
 
-        console.log(`Country list : ${countriesList}`);
         return countriesList;
     };
 

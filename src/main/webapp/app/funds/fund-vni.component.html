@@ -1,1 +1,26 @@
-List of vni
+<div>
+    <h2>
+        <span jhiTranslate="kbldemoApp.vniHistory.home.title">Vni Histories</span>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="vniHistories">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+                <th jhiSortBy="date"><span jhiTranslate="kbldemoApp.vniHistory.date">Date</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="value"><span jhiTranslate="kbldemoApp.vniHistory.value">Value</span> <span class="fa fa-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let vniHistory of vniHistories ;trackBy: trackId">
+                <td>{{vniHistory.date | date:'medium'}}</td>
+                <td>{{vniHistory.value}}  ({{vniHistory.fund.currency.code}})</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

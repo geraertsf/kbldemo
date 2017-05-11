@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {FundListComponent} from './fund-list.component';
 import {KbldemoSharedModule} from '../shared/shared.module';
 import {FundVniComponent} from './fund-vni.component';
+import {FundsService} from './funds.service';
 /**
  * Created by Francois Geraerts on 4/05/17.
  */
@@ -17,7 +18,7 @@ import {FundVniComponent} from './fund-vni.component';
         FundListComponent, FundVniComponent
     ],
     entryComponents: [],
-    providers: []
+    providers: [FundsService]
     // ,
     // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
