@@ -27,7 +27,8 @@
                 <!--<th></th>-->
             </tr>
             </thead>
-            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
+                   [infiniteScrollDistance]="0">
             <tr *ngFor="let fund of funds ;trackBy: trackId">
                 <td>
                     <div *ngIf="fund.category">
@@ -45,7 +46,13 @@
                 <td>{{fund.range}}</td>
                 <td>{{fund.name}}</td>
                 <td>{{countryList(fund)}}</td>
-                <td>{{fund.lastVniValue}}</td>
+                <td>
+                    <div *ngIf="fund.lastVniValue">
+                        <a [routerLink]="['../funds-vni', fund?.id ]"> {{fund.lastVniValue}}</a>
+
+                    </div>
+
+                </td>
                 <td>
                     <div *ngIf="fund.currency">
                         <!--<a [routerLink]="['../currency', fund.currency?.id ]" >{{fund.currency?.code}}</a>-->
